@@ -19,6 +19,6 @@ test.describe('Home - Baseline Screens', () => {
     // Log out
     await page.click('.nav-link[href="/parking/logout"]');
     await page.waitForSelector('.row a[href="/parking/login"]')
-  })
+  });
 
 });
