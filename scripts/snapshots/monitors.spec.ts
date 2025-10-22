@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { BASE, MONITOR_ID, MONITOR_NAME } from './constants';
 
-test.describe('Menu - Baseline Screens', () => {
+test.describe('Monitors - Baseline Screens', () => {
   test.beforeEach(async ({ page }) => {
     // Log In
     await page.goto(`${BASE}/parking/login`);

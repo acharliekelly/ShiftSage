@@ -1,9 +1,8 @@
 import { test, expect } from '@playwright/test';
+import { BASE } from './constants';
 
-// Base URL where Express serves current EJS version
-const BASE = process.env.APP_URL ?? 'https://localhost:3000';
 
-test.describe('Menu - Baseline Screens', () => {
+test.describe('ExtraOT - Baseline Screens', () => {
   test.beforeEach(async ({ page }) => {
     // Log In
     await page.goto(`${BASE}/parking/login`);

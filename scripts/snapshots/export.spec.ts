@@ -1,8 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { BASE } from './constants';
 
-
-test.describe('Home - Baseline Screens', () => {
+test.describe('Export Overtime - Baseline Screens', () => {
   test.beforeEach(async ({ page }) => {
     // Log In
     await page.goto(`${BASE}/parking/login`);
@@ -18,5 +17,11 @@ test.describe('Home - Baseline Screens', () => {
     await page.click('.nav-link[href="/parking/logout"]');
     await page.waitForSelector('.row a[href="/parking/login"]')
   });
+
+  test('open export page', async ({ page }) => {
+    await page.goto(`${BASE}/parking/exportovertime`);
+    await page.waitForLoadState('networkidle');
+    await page.screenshot({ path: 'docs/ui-baseline/overtime/2025-10-21_export.png', fullPage: true });
+  })
 
 });

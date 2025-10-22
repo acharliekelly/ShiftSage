@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { BASE } from './constants';
 
 
-test.describe('Home - Baseline Screens', () => {
+test.describe('Finalize - Baseline Screens', () => {
   test.beforeEach(async ({ page }) => {
     // Log In
     await page.goto(`${BASE}/parking/login`);
@@ -18,5 +18,13 @@ test.describe('Home - Baseline Screens', () => {
     await page.click('.nav-link[href="/parking/logout"]');
     await page.waitForSelector('.row a[href="/parking/login"]')
   });
+
+  test('finalize page', async ({ page }) => {
+    await page.goto(`${BASE}/parking/finalize`);
+    await page.waitForLoadState('networkidle');
+    await page.screenshot({ path: 'docs/ui-baseline/finalize/2025-10-21_finalize-default.png', fullPage: true });
+  });
+
+  // TODO: finalize, backup, import
 
 });

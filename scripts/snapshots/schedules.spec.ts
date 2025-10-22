@@ -1,7 +1,5 @@
 import { test, expect } from '@playwright/test';
-
-// Base URL where Express serves current EJS version
-const BASE = process.env.APP_URL ?? 'https://localhost:3000';
+import { BASE } from './constants';
 
 test.describe('Schedules - Baseline Screens', () => {
   test.beforeEach(async ({ page }) => {
