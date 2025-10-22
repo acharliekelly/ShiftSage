@@ -1,5 +1,6 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { BASE } from './constants';
+import { snapshotPath } from './utils';
 
 
 test.describe('ExtraOT - Baseline Screens', () => {
@@ -22,7 +23,8 @@ test.describe('ExtraOT - Baseline Screens', () => {
   test('open ExtraOT page',  async ({ page }) => {
     await page.goto(`${BASE}/parking/extraOT`);
     await page.waitForLoadState('networkidle');
-    await page.screenshot({ path: 'docs/ui-baseline/extraOT/2025-10-21_extraOT_default.png', fullPage: true });
+    const shotpath = snapshotPath('extraOT');
+    await page.screenshot({ path: shotpath, fullPage: true });
   });
 
   test('add hours', async ({ page }) => {
@@ -32,14 +34,16 @@ test.describe('ExtraOT - Baseline Screens', () => {
     await page.fill('#comment', "some reason");
     await page.click('button[type="submit"]');
     await page.waitForLoadState('networkidle');
-    await page.screenshot({ path: 'docs/ui-baseline/extraOT/2025-10-21_extraOT_added.png', fullPage: true });
+    const shotpath = snapshotPath('extraOT', 'added');
+    await page.screenshot({ path: shotpath, fullPage: true });
   });
 
   test('delete hours', async ({ page }) => {
     await page.goto(`${BASE}/parking/extraOT`); 
     await page.click('table tr:first-of-type button.btn-danger');
     await page.waitForLoadState('networkidle');
-    await page.screenshot({ path: 'docs/ui-baseline/extraOT/2025-10-21_extraOT_deleted.png', fullPage: true });
+    const shotpath = snapshotPath('extraOT', 'deleted');
+    await page.screenshot({ path: shotpath, fullPage: true });
   });
 
 });

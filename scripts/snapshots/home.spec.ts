@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { BASE } from './constants';
-
+import { snapshotPath } from './utils';
 
 test.describe('Home - Baseline Screens', () => {
   test.beforeEach(async ({ page }) => {
@@ -17,6 +17,13 @@ test.describe('Home - Baseline Screens', () => {
     // Log out
     await page.click('.nav-link[href="/parking/logout"]');
     await page.waitForSelector('.row a[href="/parking/login"]')
+  });
+
+  test('home snapshot', async ({ page }) => {
+    page.goto(`${BASE}/parking/overtime`);
+    await page.waitForLoadState('networkidle');
+    const shotpath = snapshotPath('home');
+    await page.screenshot({ path: shotpath, fullPage: true });
   });
 
 });

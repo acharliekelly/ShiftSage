@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { BASE } from './constants';
+import { snapshotPath } from './utils';
 
 test.describe('Export Overtime - Baseline Screens', () => {
   test.beforeEach(async ({ page }) => {
@@ -21,7 +22,8 @@ test.describe('Export Overtime - Baseline Screens', () => {
   test('open export page', async ({ page }) => {
     await page.goto(`${BASE}/parking/exportovertime`);
     await page.waitForLoadState('networkidle');
-    await page.screenshot({ path: 'docs/ui-baseline/overtime/2025-10-21_export.png', fullPage: true });
+    const shotpath = snapshotPath('export');
+    await page.screenshot({ path: shotpath, fullPage: true });
   })
 
 });

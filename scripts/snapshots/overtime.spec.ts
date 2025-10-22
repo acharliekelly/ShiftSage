@@ -1,5 +1,6 @@
-import { test, expect } from '@playwright/test';
-import { BASE, MONITOR_ID, MONITOR_NAME } from './constants';
+import { test } from '@playwright/test';
+import { BASE } from './constants';
+import { snapshotPath } from './utils';
 
 test.describe('Overtime - Baseline Screens', () => {
   test.beforeEach(async ({ page }) => {
@@ -21,7 +22,8 @@ test.describe('Overtime - Baseline Screens', () => {
   test('open Overtime Sheets',  async ({ page }) => {
     await page.goto(`${BASE}/parking/overtime`);
     await page.waitForLoadState('networkidle');
-    await page.screenshot({ path: 'docs/ui-baseline/overtime/2025-10-21_overtime_default.png', fullPage: true });
+    const shotpath = snapshotPath('overtime');
+    await page.screenshot({ path: shotpath, fullPage: true });
   });
 
   // TODO: test other features
