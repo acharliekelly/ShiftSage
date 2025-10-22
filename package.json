@@ -1,11 +1,11 @@
 {
-  "name": "ShiftSage",
+  "name": "shiftsage",
   "version": "1.0.0",
   "description": "Calculating overtime bids hours charged, and rendering a schedule",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js --ignore debug_weeklyTable.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx playwright test scripts/snapshots/schedules.spec.ts"
   },
   "author": "",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "express": "^4.17.1",
     "express-flash": "^0.0.2",
     "express-session": "^1.17.1",
-    "html2pdf.js": "^0.9.0",
+    "html2pdf.js": "^0.12.1",
     "json-as-xlsx": "^2.5.6",
     "jspdf": "^3.0.1",
     "method-override": "^3.0.0",
@@ -31,6 +31,17 @@
     "validator": "^13.6.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.56.1",
     "nodemon": "^3.1.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acharliekelly/ShiftSage.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/acharliekelly/ShiftSage/issues"
+  },
+  "homepage": "https://github.com/acharliekelly/ShiftSage#readme"
 }
