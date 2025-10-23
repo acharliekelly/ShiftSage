@@ -2,13 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import AppLayout from './ui/AppLayout'
-import ScheduleWeek from './ScheduleWeek';
-import ExtraOT from './ExtraOT';
-import Monitors from '';
-import Holidays from '';
-import OvertimeSheets from '';
-import ExportOvertime from '';
-import Finalize from '';
+import ScheduleWeek from './pages/ScheduleWeek';
+import ExtraOT from './pages/ExtraOT';
+import Monitors from './pages/Monitors';
+import Holidays from './pages/Holidays';
+import OvertimeSheets from './pages/Overtime';
+import ExportOvertime from './pages/Export';
+import Finalize from './pages/Finalize';
 
 const router = createBrowserRouter([
   {
@@ -17,8 +17,12 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <div>ShiftSage</div> },
       { path: 'schedules/extraot', element: <ExtraOT />},
-      
+      { path: 'schedules/monitors', element: <Monitors />},
+      { path: 'schedules/holidays', element: <Holidays />},
+      { path: 'schedules/overtime', element: <OvertimeSheets />},
       { path: 'schedules/week', element: <ScheduleWeek /> },
+      { path: 'export', element: <ExportOvertime />},
+      { path: 'schedules/finalize', element: <Finalize />}
     ]
   }
 ])
