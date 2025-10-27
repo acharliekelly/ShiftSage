@@ -1,4 +1,5 @@
 import { defineConfig } from "@playwright/test"
+import 'dontenv/config'
 
 export default defineConfig({
   testDir: 'scripts/snapshots',
