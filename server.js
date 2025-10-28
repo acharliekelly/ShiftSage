@@ -89,7 +89,7 @@ app.get("/", (req, res) => {
   res.redirect("/parking");
 });
 // app.get("/login", (req, res) => {
-//   res.redirect("/parking/login");
+//   res.redirect("login");
 // });
 
 //Server Running
