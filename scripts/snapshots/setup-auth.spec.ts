@@ -9,9 +9,9 @@ const authFile = path.join(__dirname, 'storageState.json');
 // only run manually when session changes
 setup('authenticate', async ({ page }) => {
   // fill in demo credentials
-  await page.goto(`${BASE}/parking/login`);
+  await page.goto(`${BASE}/login`);
   await page.fill('#username', process.env.PLAYWRIGHT_USER!);
-  await page.fill('#exampleInputPassword1', process.env.PLAYWRIGHT_PASSWORD!);
+  await page.fill('#password', process.env.PLAYWRIGHT_PASSWORD!);
   await page.click('button[type="submit"]');
 
   // wait for known post-login element
