@@ -13,11 +13,23 @@ const getLogin = (req, res) => {
 
 const postLogin = (req, res, next) => {
   const validationErrors = [];
-  if (validator.isEmpty(req.body.username)) {
+  if (validator.isEmpty(req.body.userName)) {
+    console.log("Validator: 'userName' field is blank")
     validationErrors.push({ msg: "Username cannot be blank." });
   }
-  if (validator.isEmpty(req.body.password))
+  if (validator.isEmpty(req.body.password)) {
+    console.log("Validator: 'password' field is blank")
     validationErrors.push({ msg: "Password cannot be blank." });
+  }
+  if (validator.isEmpty(req.body.confirmPassword)) {
+    console.log("Validator: 'confirmPassword' field is blank")
+    validationErrors.push({ msg: "Passwords must match." });
+  }
+  if (!validator.equals(req.body.password, req.body.confirmPassword)) {
+    console.log("Validator: 'confirmPassword' does not match 'password'")
+    validationErrors.push({ msg: "Passwords must match." });
+  }
+    
 
   if (validationErrors.length) {
     req.flash("errors", validationErrors);
@@ -77,9 +89,9 @@ const postSignup = async(req, res, next) => {
   const validationErrors = [];
   if (!validator.isEmpty(req.body.userName))
     validationErrors.push({msg: "Please enter a valid username."});
-  if (!validator.isLength(req.body.password, { min: 8 }))
+  if (!validator.isLength(req.body.password, { min: 7 }))
     validationErrors.push({
-      msg: "Password must be at least 8 characters long",
+      msg: "Password must be at least 7 characters long",
     });
   if (req.body.password !== req.body.confirmPassword)
     validationErrors.push({ msg: "Passwords do not match" });
